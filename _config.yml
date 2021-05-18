@@ -79,7 +79,7 @@ ga_domain: huangxuan.me
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "周琪岳,2019届KDT入坑OI选手,第37届合肥市信息学竞赛一等奖"
-sidebar-avatar: ![Alt text](https://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9C%B0%E7%90%83&hs=2&pn=0&spn=0&di=6380&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=4113676382%2C688541661&os=626485750%2C2874965687&simid=2545311548%2C2175359802&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=%E5%9C%B0%E7%90%83&objurl=https%3A%2F%2Fgimg2.baidu.com%2Fimage_search%2Fsrc%3Dhttp%3A%2F%2Fpic.baike.soso.com%2Fp%2F20120302%2F20120302143857-1178248017.jpg%26refer%3Dhttp%3A%2F%2Fpic.baike.soso.com%26app%3D2002%26size%3Df9999%2C10000%26q%3Da80%26n%3D0%26g%3D0n%26fmt%3Djpeg%3Fsec%3D1623935786%26t%3Dcf25a0b3b2c3f85e11e2ca4f00fc176c&fromurl=ippr_z2C%24qAzdH3FAzdH3Fkwthj_z%26e3Bf5f5_z%26e3Bv54AzdH3Fi890mn_z%26e3Bip4%3Ffr%3DSr6je%26fr%3Dscb09cnn0&gsm=1&islist=&querylist=)      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic.baike.soso.com%2Fp%2F20120302%2F20120302143857-1178248017.jpg&refer=http%3A%2F%2Fpic.baike.soso.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623936528&t=b173210603917d1877d6a17d634d3378 # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
