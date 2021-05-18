@@ -79,7 +79,7 @@ ga_domain: huangxuan.me
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "周琪岳,2019届KDT入坑OI选手,第37届合肥市信息学竞赛一等奖"
-sidebar-avatar: https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic.baike.soso.com%2Fp%2F20120302%2F20120302143857-1178248017.jpg&refer=http%3A%2F%2Fpic.baike.soso.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623936528&t=b173210603917d1877d6a17d634d3378 # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic.baike.soso.com%2Fp%2F20120302%2F20120302143857-1178248017.jpg&refer=http%3A%2F%2Fpic.baike.soso.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623936528&t=b173210603917d1877d6a17d634d3378 # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
