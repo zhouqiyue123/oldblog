@@ -4,7 +4,7 @@ title:      "浅谈基础数据结构-二叉树"
 subtitle:   "二叉树的基本概念"
 date:       2021-05-19 18:00:00
 author:     "周琪岳"
-header-img: "img/post-bg-2015.jpg"
+header-img: "up.bizhitupian.com/pic/b2/5e/21/b25e21601355f36f565f3a8b8d6579ec.jpg"
 catalog: true
 tags: 
   - C++
