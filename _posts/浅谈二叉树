@@ -6,9 +6,7 @@ date:       2021-05-19 18:00:00
 author:     "周琪岳"
 header-img: "img/post-bg-2015.jpg"
 catalog: true
-tags:
-    - C++
-    - Meta
+tags: 
 ---
 # 一、树
 子结点:和父结点相对，一个结点的后继结点。父结点:和子结点相对，一个结点的前驱结点。根结点:没有父结点的结点。
