@@ -2,7 +2,7 @@
 layout:     post
 title:      "CF1064B 题解"
 subtitle:   "Equations of Mathematical Magic"
-date:       2021-05-20 18:13:00
+date:       2021-05-20 19:22:00
 author:     "周琪岳"
 header-img: "medium.com/@WebdesignerDepot/poll-should-css-become-more-like-a-programming-language-c74eb26a4270"
 catalog: true
