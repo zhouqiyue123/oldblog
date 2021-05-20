@@ -14,8 +14,8 @@ future: true
 # SNS settings
 RSS: false
 # weibo_username:     huxpro
-# zhihu_username:     huxpro
-# github_username:    huxpro
+zhihu_username:     星际周
+github_username:    zhouqiyue123
 # twitter_username:   huxpro
 #facebook_username:  huxpro
 #linkedin_username:  firstname-lastname-idxxxx
@@ -106,7 +106,7 @@ friends: [
     #     title: "Su",
     #     href: "http://su.gallery/"
     # },{
-        title: "周琪岳的KDT主页",
-        href: "https://ke.codingtang.com/#/user/studentCenter?id=2296"
+        title: "ZQY的洛谷主页",
+        href: "https://www.luogu.com.cn/user/446233"
     }
 ]
