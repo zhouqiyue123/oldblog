@@ -2,10 +2,10 @@
 layout:     post
 title:      "浅谈基础数据结构-图"
 subtitle:   "图的基本概念"
-date:       2021-05-19 18:00:00
+date:       2021-05-21 19:24:00
 author:     "周琪岳"
-header-img: "https://pic4.zhimg.com/v2-3a34e045b2ccc6ab6038ae79a3831ebd_1440w.jpg?source=172ae18b"
-catalog: true
+header-style: text
+catalog: false
 tags: 
   - C++
   - 数据结构
