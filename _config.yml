@@ -103,12 +103,10 @@ page-mathjax: false
 # Friends
 friends: [
     {
-    #     title: "Su",
-    #     href: "http://su.gallery/"
-    # },{
         title: "ZQY的洛谷主页",
         href: "https://www.luogu.com.cn/user/446233"
     },{
       title: "HPZ大佬",
       href: "https://houpingze.github.io"
+    }
 ]
