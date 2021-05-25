@@ -1,0 +1,56 @@
+---
+layout:     post
+title:      "浅谈基础数据结构-并查集"
+subtitle:   "并查集的基本概念"
+date:       2021-05-25 19:43:00
+author:     "周琪岳"
+header-style: text
+catalog: false
+tags: 
+  - C++
+  - 数据结构
+  - 并查集
+---
+# 并查集  
+
+## 1. 概念  
+对于一些集合操作，例如判断两个元素是否属于同一集合，或者将两个元素所在的集合合并为一个，这时我们需要一个高效的方法。  
+并查集（union-find set）是一种用于分离集合操作的抽象数据类型。它可以帮助我们快速合并两个元素a和b所在的集合，其间需要反复查找某个元素所在集合。  
+
+## 2.初始化  
+```c++
+void init(){
+	for(int i=1;i<=n;i++)
+    	fa[i]=i;
+}
+```
+## 3.返回x的集合代表  
+```c++
+int find(int x){	//返回x的代表 
+	if(fa[x]==x) return fa[x];
+	return fa[x]=find(fa[x]);//将find(fa[x]值作为参数传给fa[x] 优化 不然下次再递归到x时，还要继续递归 
+}
+```
+## 4.将x和y合并  
+```c++
+void unit(int x,int y){//将x和y合并 
+	x=find(x);
+	y=find(y);
+	if(x==y) return ;//如果已经相同了不需要再合并了 
+	fa[y]=x;//x和y此时已经表示各自集合的代表了 	令y的代表为x 
+} 
+```
+## 5.判断x和y是否属于同一个集合  
+```c++
+bool same(int x,int y){//判断x和y是否属于同一个集合 
+	return find(x)==find(y);
+}
+```
+### 拓展：STL-map来定义fa数组  
+```c++
+map<string,string> fa;
+fa["ahu"]="hfut";//安大 合工大
+fa["hfut"]="ustc";//合工大  科大
+fa["thu"]="pku";//清华 北大
+cout<<find("ahu")==find("hfut");//输出1 安大 和 合工大 在同一地区
+```
