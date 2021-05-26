@@ -1,0 +1,66 @@
+---
+layout:     post
+title:      "浅谈基础数据结构-栈"
+subtitle:   "栈的基本概念"
+date:       2021-05-26 18:14:00
+author:     "周琪岳"
+header-style: text
+catalog: false
+tags: 
+  - C++
+  - 数据结构
+  - 栈
+---
+# 线性表
+线性表是一个逻辑结构，其中的每一个元素都有唯一的前驱和后继，除了第一个元素没有前驱，最后一个元素没有后继。 例如：字符串、栈、队列
+数组和链表都是存储结构，不是逻辑结构。
+除了线性表这种逻辑结构，还有树、图等其它逻辑结构。
+
+# 栈
+栈是一个特殊的线性表
+添加和删除元素的位置在线性表的同一端，这端叫做栈顶，另一端叫做栈底。 先进后出/后进先出（last in first out）(LIFO表)
+
+## 栈的主要操作
+1. 添加元素 入栈/压栈
+2. 删除元素 出栈/弹栈
+3. 取栈顶元素
+4. 求栈中元素的数量
+5. 判断栈是否为空
+```c++
+struct MyStack{
+	int tp;//栈顶指针 
+	int s[MAX_LEN];
+	void init(){//初始化 
+		tp=0;//栈顶指针指向栈底 
+	}
+	bool empty(){//判断栈是否为空 
+		return tp==0;
+	} 
+	bool push(int e){//入栈 
+		if(tp==MAX_LEN) return false;//判断是否栈满 
+		s[tp++]=e;
+		return true;
+	} 
+	bool pop(int e){//出栈
+		if(tp<=0) return false; 
+		tp--;
+		return true;
+	} 
+	int top(){//栈顶元素值 
+		return s[tp-1];
+	}
+	int size(){//返回栈中元素数量 
+		return tp;
+	} 
+};
+```
+
+## STL-stack
+1. 头文件 #include<stack>
+2. 定义栈 stack<type> s;
+3. 入栈 s.push(e);
+4. 出栈 s.pop(); 删除栈顶元素
+5. 取栈顶元素 s.top();
+6. 判断栈顶是否为空 s.empty();
+7. 栈中元素数量 s.size();
+8. 两个栈可以直接比较字典序大小，用法和字符串比较大小一样，返回bool值
