@@ -4,8 +4,8 @@ title:      "浅谈基础数据结构-栈"
 subtitle:   "栈的基本概念"
 date:       2021-05-26 18:14:00
 author:     "周琪岳"
-header-style: text
-catalog: false
+header-img: "https://s.cn.bing.net/th?id=ABTD07E79A694D7C95209C3B559D144CCA232FB02E22ADAF42F1885C4608DE71126&w=608&h=200&c=2&rs=1&o=6&dpr=2&pid=SANGAM"
+catalog: true
 tags: 
   - C++
   - 数据结构
