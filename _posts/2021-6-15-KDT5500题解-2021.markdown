@@ -1,0 +1,56 @@
+---
+layout:     post
+title:      "KDT5500 题解"
+subtitle:   "取数（max）—— 小学组庐阳区2020年信息学竞赛试题"
+date:       2021-06-15 20:32:00
+author:     "周琪岳"
+header-style: text
+catalog: false
+tags: 
+  - C++
+  - 酷町堂
+  - 题解
+---
+> 本篇文章仅有题解，若要查看题目请[访问](https://ke.codingtang.com/#/problem/problemSub?id=5550)
+
+## 大体思路
+
+DP+优先队列维护调了个半天，TLE两个Subtask，后被告知只要状态变一下就OK，瞬间崩溃。。。/kel
+
+言归正传，状态设为数值，开两个dp数组O(1000000)肝一波  
+由于实现起来比较简单，就不加注释了  
+
+## 代码实现
+
+```c++
+#include <iostream>
+#define inf 1000005
+
+using namespace std;
+
+int n;
+long long a[inf], f[inf], g[inf];
+long long vis[inf];
+long long ans = -0x3f3f3f3f;
+
+int main() {
+	cin >> n;
+	for(int i=1; i<=n; i++) {
+		cin >> a[i];
+		vis[a[i]] ++;
+	}
+	for(int i=1; i<=inf-5; i++) {
+		if(vis[i] == 0) {
+			g[i] = g[i-1];
+			continue;
+		}
+		if(i == 1 || i == 2) f[i] = vis[i]*i;
+		f[i] = g[i-2] + vis[i]*i;
+		g[i] = max(g[i-1], f[i]);
+		ans = max(ans, f[i]);
+	}
+	cout << ans;
+	return 0;
+}
+```
+「打开本帖的人RP++」  
