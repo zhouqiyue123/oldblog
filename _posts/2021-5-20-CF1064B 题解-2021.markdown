@@ -8,6 +8,7 @@ header-style: text
 catalog: false
 tags: 
   - C++
+  - Codeforces
   - 题解
 ---
 ## 切入点：对方程进行转化  
