@@ -4,7 +4,10 @@ title:      "图论-图上MST的Prim算法"
 subtitle:   "图上MST的Prim算法综合探究"
 date:       2021-06-06 10:41:00
 author:     "周琪岳"
-header-img: "img/post-bg-apple-event-2015.jpg"
+header-img: "img/post-bg-css.jpg"
+header-img-credit: "@WebdesignerDepot"
+header-img-credit-href: "medium.com/@WebdesignerDepot/poll-should-css-become-more-like-a-programming-language-c74eb26a4270"
+header-mask: 0.4
 catalog: true
 tags: 
   - C++
