@@ -4,8 +4,8 @@ title:      "浅谈基础数据结构-并查集"
 subtitle:   "并查集的基本概念"
 date:       2021-05-25 19:43:00
 author:     "周琪岳"
-header-style: text
-catalog: false
+header-img: "img/post-bg-apple-event-2015.jpg"
+catalog: true
 tags: 
   - C++
   - 数据结构
