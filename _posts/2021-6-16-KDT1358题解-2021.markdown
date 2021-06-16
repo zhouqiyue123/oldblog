@@ -1,0 +1,76 @@
+---
+layout:     post
+title:      "酷町堂OJ之1358 题解"
+subtitle:   "取---
+layout:     post
+title:      "酷町堂OJ之5500 题解"
+subtitle:   "最短网络Agri-Net ———— Prim模板"
+date:       2021-06-16 16:47:00
+author:     "周琪岳"
+header-style: text
+catalog: false
+tags: 
+  - C++
+  - 酷町堂
+  - 题解
+---
+> 本篇文章仅有题解，若要查看题目请[访问](https://ke.codingtang.com/#/problem/problemSub?id=1358)
+
+*为了把Blog搞繁荣，最近会经常更题解，请各位过路大神知悉*
+
+## 大体思路
+
+题目比较良心，输入的数据实际上就是**邻接矩阵**，Prim直接裸奔即可通过  
+连自环都不需要处理  
+
+## 代码实现
+
+```c++
+#include <iostream>
+#include <cstring>
+#define inf 105
+
+using namespace std;
+
+int n;
+int g[inf][inf];
+int dis[inf];
+bool found[inf];
+
+int MST_prim() { // 最小生成树Prim算法
+	int ans = 0;
+	memset(dis, 0x3f, sizeof(dis));
+	memset(found, false, sizeof(found));
+	dis[1] = 0;
+	while(1) {
+		int u = -1;
+		for(int i=1; i<=n; i++) {
+			if(!found[i] && (u == -1 || dis[i] < dis[u])) {
+				u = i;
+			}
+		}
+		if(u == -1) break; // 切记，不要写成“return;”，还要返回ans，跟Dijkstra不一样
+		found[u] = true;
+		ans += dis[u];
+		for(int i=1; i<=n; i++) {
+			if(!found[i] && g[u][i] < dis[i]) {
+				dis[i] = g[u][i];
+			}
+		}
+	}
+	return ans;
+}
+
+int main() {
+	cin >> n;
+	for(int i=1; i<=n; i++) {
+		for(int j=1; j<=n; j++) {
+			cin >> g[i][j];
+		}
+	}
+	cout << MST_prim();
+	return 0;
+}
+、、、
+
+「打开本帖的人RP++」  
