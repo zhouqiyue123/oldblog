@@ -1,8 +1,5 @@
 ---
 layout:     post
-title:      "酷町堂OJ之1358 题解"
-subtitle:   "取---
-layout:     post
 title:      "酷町堂OJ之5500 题解"
 subtitle:   "最短网络Agri-Net ———— Prim模板"
 date:       2021-06-16 16:47:00
