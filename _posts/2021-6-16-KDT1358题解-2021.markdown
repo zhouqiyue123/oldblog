@@ -68,6 +68,6 @@ int main() {
 	cout << MST_prim();
 	return 0;
 }
-、、、
+```
 
 「打开本帖的人RP++」  
