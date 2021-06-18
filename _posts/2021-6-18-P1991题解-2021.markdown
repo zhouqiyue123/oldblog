@@ -1,0 +1,115 @@
+---
+layout:     post
+title:      "洛谷OJ之P1991 题解"
+subtitle:   "无线通讯网"
+date:       2021-06-18 17:19:00
+author:     "周琪岳"
+header-style: text
+catalog: false
+tags: 
+  - C++
+  - 洛谷
+  - 并查集
+  - 二分法
+  - 联通快
+  - 图论
+  - 邻接表
+  - 题解
+---
+> 本篇文章仅有题解，若要查看题目请[访问](https://www.luogu.com.cn/problem/P1991)
+
+## 大体思路
+
+二分d值，判联通块的时候并查集比较好实现，边快速打了一下并查集模板，采用桶的方式在线性时间内算出联通块数量
+时间复杂度为O(n^2logn^2)，本来准备瓶颈生成树干一波，结果一看题解快崩溃，根本理解不了，还是乖乖写二分
+代码如下
+
+## 代码实现
+
+```c++
+#include <iostream>
+#include <cstring>
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <algorithm>
+#define inf 505
+
+using namespace std;
+
+int n, k;
+double x[inf], y[inf];
+struct node {
+	int v;
+	double w;
+};
+vector<node> g[inf];
+double data[inf*inf];
+int p;
+int fa[inf];
+// 并查集模板，连一点变形都没有
+void init() {
+	for(int i=1; i<=n; i++)
+		fa[i] = i;
+}
+int find(int x) {
+	if(fa[x] == x) return x;
+	return fa[x] = find(fa[x]);
+}
+void unite(int x, int y) {
+	x = find(x), y = find(y);
+	if(x == y) return;
+	fa[y] = x;
+}
+bool same(int x, int y) {
+	return find(x) == find(y);
+}
+bool check(double x) {
+	init();
+  // 求出所有联通块，保证块内顶点相互距离<=x
+	for(int i=1; i<=n; i++) {
+		for(int j=0; j<g[i].size(); j++) {
+			node t = g[i][j];
+			if(t.w <= x) unite(t.v, i);
+		}
+	}
+  // 桶来实现联通块计数
+	bool vis[inf] = {0};
+	for(int i=1; i<=n; i++) {
+		vis[find(i)] = true;
+	}
+	int cnt = 0;
+	for(int i=1; i<=n; i++) {
+		if(vis[i]) {
+			cnt ++;
+		}
+	}
+  // 当联通块数量小于卫星电话数量，即可true
+	if(cnt <= k) return true;
+	return false;
+}
+int main() {
+	cin >> k >> n;
+	for(int i=1; i<=n; i++) {
+		cin >> x[i] >> y[i];
+	}
+	for(int i=1; i<=n; i++) {
+		for(int j=1; j<=n; j++) {
+			double tmp = sqrt((x[i]-x[j])*(x[i]-x[j])+(y[i]-y[j])*(y[i]-y[j])); // 直线距离
+			g[i].push_back((node){j, tmp});
+			data[++ p] = tmp;
+		}
+	}
+	sort(data+1, data+p+1, less<double>());
+	int l = 1, r = p;
+	while(l < r) {
+		int mid = (l + r)/2;
+		if(check(data[mid])) r = mid;
+		else l = mid + 1;
+	}
+	printf("%.2f", data[l]);
+	return 0;
+}
+```
+
+「打开本帖的人RP++」  
