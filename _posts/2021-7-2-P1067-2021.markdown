@@ -1,0 +1,64 @@
+---
+layout:     post
+title:      "洛谷OJ之P1067[图灵圈1220]题解"
+subtitle:   "多项式输出"
+date:       2021-07-02 20:17:00
+author:     "周琪岳"
+header-style: text
+catalog: false
+tags: 
+  - C++
+  - 洛谷
+  - 模拟
+  - 字符串
+  - 数学
+---
+> 本篇文章仅有题解，若要查看题目请[访问](https://www.luogu.com.cn/problem/P1067)
+
+## 大体思路
+
+针对每一个项，先判正负号，再输出系数，最后输出x的几次项，按照题目所讲的，进行一些特判，只要仔细一点，很容易就过了。
+
+## 代码实现
+
+```c++
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+const int inf = 1e2 + 100;
+int n;
+int a[inf];
+
+int main() {
+	cin >> n;
+	for(int i=1; i<=n+1; i++) {
+		cin >> a[i];
+	}
+	for(int i=1; i<=n+1; i++) {
+		if(a[i] == 0) continue; // 特判
+		else {
+      // 先看正负
+			if(a[i] < 0) cout << "-";
+			else if(i != 1) cout << "+";
+			
+      // 再看系数
+			a[i] = abs(a[i]); // 这里求绝对值是为了输出系数更方便
+			if(a[i] == 1 && i == n+1) {
+				cout << "1";
+				continue;
+			}
+			else if(a[i] != 1) { cout << a[i]; }
+			
+      // 最后输出x
+			if(i == n+1) continue;
+			else if(i == n) cout << "x";
+			else cout << "x^" << n+1-i;
+		}
+	}
+	return 0;	
+}
+```
+
+「打开本帖的人RP++」  
