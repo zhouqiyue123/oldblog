@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "集训队比赛Day1游记"
+title:      "45中集训队比赛Day1游记"
 subtitle:   "COMPLETE AND PROGRESS"
 date:       2021-07-02 13:00:00
 author:     "周琪岳"
