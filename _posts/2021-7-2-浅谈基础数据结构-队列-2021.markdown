@@ -89,7 +89,7 @@ struct Queue {
 
 queue  
 头文件#include <queue>  
-定义队列 queue<type> q;type是数据类型，q是队列名。  
+定义队列 queue<type>q; type是数据类型，q是队列名。  
 入队 q.push(e) e为元素值  
 出队 q.pop() 对首元素出队  
 取队首元素 q.front() 返回对首元素值  
