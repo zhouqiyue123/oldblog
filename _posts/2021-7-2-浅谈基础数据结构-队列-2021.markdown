@@ -1,0 +1,97 @@
+---
+layout:     post
+title:      "浅谈基础数据结构-队列"
+subtitle:   "队列的基本概念"
+date:       2021-07-02 15:26:00
+author:     "周琪岳"
+header-img: "img/post-bg-apple-event-2015.jpg"
+catalog: true
+tags: 
+  - C++
+  - 数据结构
+  - 队列
+  - 浅谈系列
+---
+# 1. 队列
+
+队列是一个添加和删除元素的位置受限制的线性表。添加和删除元素在表的不同端。  
+添加元素叫做入队，删除元素叫做出队。  
+添加元素的一端叫做队尾，删除元素的一端叫做队首。  
+队列又叫先进先出（FIFO）表。  
+
+# 2. 队列构成
+
+1. 数组存储队列中的元素
+
+2. 队首指针head，位于队首这一端，指向队首元素的位置
+
+3. 队尾指针tail，位于队尾这一端，指向队尾元素的后一个位置
+
+注：队首指针到队尾指针之间是队列中的元素。
+
+# 3. 队列基本操作
+
+入队(enQueue)：在队尾指针处插入新元素，队尾指针往后移一位  
+（1）当数组被用完时，再插入新元素会溢出  
+（2）队列无法再插入新元素，但是数组实际上存在一些位置没有元素，再插入新元素会假溢出（有些元素从对首出队了，这些位置就空出来了，下图中的红框内的位置就没有存储数据）  
+（3）避免假溢出的方法是将数组看成是一个环形的数组，构造一个循环队列  
+
+出队（deQueue）：把队首指针往后移一位  
+判断队空（isEmpty）：判断队首指针和队尾指针是否指向同一位置  
+判断队满（isFull）：判断队尾指针加1是否为队首指针的位置  
+取队首（front）  
+取队列中元素个数（length）  
+
+4. 循环队列代码  
+
+```c++
+#define MAXN 1000
+struct Queue {
+        //构成部分：数组、对首指针，队尾指针
+	int a[MAXN];
+	int head, tail;
+	
+	void init() {//初始化
+		head = tail = 0;
+	}
+	
+	bool isEmpty() {//判断队列是否为空
+		return head==tail;
+	}
+	
+	bool isFull() {//判断队满
+		return (tail+1)%MAXN==head;
+	} 
+	
+	bool enQueue(int e) {//入队
+		if(isFull())	return false;
+		a[tail] = e;
+		tail = (tail+1)%MAXN;
+		return true;
+	}
+	
+	bool deQueue() {//出队
+		if(isEmpty())	return false;
+		head = (head+1)%MAXN;
+		return true;
+	}
+	
+	int front() {//取对首
+		return a[head];
+	}
+	
+	int length() {//取队列中元素个数
+		return (tail+MAXN-head)%MAXN;
+	}
+};
+```
+5. STL-queue
+
+queue  
+头文件#include <queue>  
+定义队列 queue<type> q;type是数据类型，q是队列名。  
+入队 q.push(e) e为元素值  
+出队 q.pop() 对首元素出队  
+取队首元素 q.front() 返回对首元素值  
+判断队列是否为空 q.empty() 空返回为true，非空为false  
+返回队列元素个数 q.size()  
