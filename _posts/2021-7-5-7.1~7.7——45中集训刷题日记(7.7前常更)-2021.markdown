@@ -4,8 +4,8 @@ title:      "7.1~7.7——45中集训刷题日记(7.7前常更)"
 subtitle:   "练习往往使人进步"
 date:       2021-07-05 
 author:     "周琪岳"
-header-img: "img/post-bg-digital-native.jpg"
-catalog: true
+header-style: text
+catalog: false
 tags:
     - 45CSP-J集训队
     - 刷题日记
