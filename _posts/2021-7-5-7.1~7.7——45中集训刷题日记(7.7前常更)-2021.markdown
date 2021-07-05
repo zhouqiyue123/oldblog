@@ -11,23 +11,23 @@ tags:
     - 刷题日记
     - 日记
 ---
-# 签到题汇总
-[开开的字母表](http://www.turingz.cn/MatchProblem?id=1561&matchId=44&num=A) 简单的字符串模拟
-[开开的字符串](http://www.turingz.cn/MatchProblem?id=1562&matchId=44&num=B) 字符串+桶
-[开心的金明](https://www.luogu.com.cn/problem/P1060) 01背包模板，自己是按降维写的
-[陆陆的战队赛](http://www.turingz.cn/MatchProblem?id=1566&matchId=43&num=A) 极其愚蠢的贪心（背包）
-[陆陆的外卖](http://www.turingz.cn/MatchProblem?id=1568&matchId=43&num=C) 同上（区间）
-[陆陆的弹珠](http://www.turingz.cn/MatchProblem?id=1570&matchId=43&num=E) 简单的模拟，只不过要加栈和队列，这题还帮cjk查了个错
+# 签到题汇总  
+[开开的字母表](http://www.turingz.cn/MatchProblem?id=1561&matchId=44&num=A) 简单的字符串模拟  
+[开开的字符串](http://www.turingz.cn/MatchProblem?id=1562&matchId=44&num=B) 字符串+桶  
+[开心的金明](https://www.luogu.com.cn/problem/P1060) 01背包模板，自己是按降维写的  
+[陆陆的战队赛](http://www.turingz.cn/MatchProblem?id=1566&matchId=43&num=A) 极其愚蠢的贪心（背包）  
+[陆陆的外卖](http://www.turingz.cn/MatchProblem?id=1568&matchId=43&num=C) 同上（区间）  
+[陆陆的弹珠](http://www.turingz.cn/MatchProblem?id=1570&matchId=43&num=E) 简单的模拟，只不过要加栈和队列，这题还帮cjk查了个错  
 
-# 中等题汇总
-[开开的打野路线](http://www.turingz.cn/MatchProblem?id=1563&matchId=44&num=C) 图上的搜索与回溯
-[陆陆的宝物](http://www.turingz.cn/MatchProblem?id=1567&matchId=43&num=B) 贪心，排序规则需要考虑一下，这一题没看到保留小数，WA了3次
-[乐乐的外卖](http://www.turingz.cn/MatchProblem?id=1569&matchId=43&num=D) 贪心，但是有两个人，代码相对一个人(陆陆的外卖)难度有所提高
-[棋盘](https://www.luogu.com.cn/problem/P3956) bfs+堆+记忆化，也可以理解为DP或者Dijkstra
+# 中等题汇总  
+[开开的打野路线](http://www.turingz.cn/MatchProblem?id=1563&matchId=44&num=C) 图上的搜索与回溯  
+[陆陆的宝物](http://www.turingz.cn/MatchProblem?id=1567&matchId=43&num=B) 贪心，排序规则需要考虑一下，这一题没看到保留小数，WA了3次  
+[乐乐的外卖](http://www.turingz.cn/MatchProblem?id=1569&matchId=43&num=D) 贪心，但是有两个人，代码相对一个人(陆陆的外卖)难度有所提高  
+[棋盘](https://www.luogu.com.cn/problem/P3956) bfs+堆+记忆化，也可以理解为DP或者Dijkstra  
 
-# 挑战题汇总
-[英子的套环]（http://www.turingz.cn/MatchProblem?id=1471&matchId=41&num=A）二维数组前缀和的变形，题目有一个细节很难处理
-[水水子的魔榴莲](http://www.turingz.cn/MatchProblem?id=1478&matchId=41&num=B) 专门用于比赛卡AK的，思维分析题，跟组合数学、树与图的性质相关，偏难
-[淇淇子的石头剪刀布（困难版](http://www.turingz.cn/MatchProblem?id=1483&matchId=41&num=C) 贪心法，比较巧妙，建议大家自己尝试
-[乐乐的毒瘤比赛4](http://www.turingz.cn/MatchProblem?id=1536&matchId=41&num=D) 双向Dijkstra，难度中上
-[开开的游戏](http://www.turingz.cn/MatchProblem?id=1565&matchId=41&num=E) 专门用于比赛卡AK的，强思考性问题，需要根据最长序列数量、奇偶性质进行分析，偏难
+# 挑战题汇总  
+[英子的套环]（http://www.turingz.cn/MatchProblem?id=1471&matchId=41&num=A） 二维数组前缀和的变形，题目有一个细节很难处理  
+[水水子的魔榴莲](http://www.turingz.cn/MatchProblem?id=1478&matchId=41&num=B) 专门用于比赛卡AK的，思维分析题，跟组合数学、树与图的性质相关，偏难  
+[淇淇子的石头剪刀布（困难版](http://www.turingz.cn/MatchProblem?id=1483&matchId=41&num=C) 贪心法，比较巧妙，建议大家自己尝试  
+[乐乐的毒瘤比赛4](http://www.turingz.cn/MatchProblem?id=1536&matchId=41&num=D) 双向Dijkstra，难度中上  
+[开开的游戏](http://www.turingz.cn/MatchProblem?id=1565&matchId=41&num=E) 专门用于比赛卡AK的，强思考性问题，需要根据最长序列数量、奇偶性质进行分析，偏难  
