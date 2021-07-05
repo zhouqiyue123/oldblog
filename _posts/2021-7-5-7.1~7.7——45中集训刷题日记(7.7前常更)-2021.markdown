@@ -26,7 +26,7 @@ tags:
 [棋盘](https://www.luogu.com.cn/problem/P3956) bfs+堆+记忆化，也可以理解为DP或者Dijkstra  
 
 # 挑战题汇总  
-[英子的套环]（http://www.turingz.cn/MatchProblem?id=1471&matchId=41&num=A） 二维数组前缀和的变形，题目有一个细节很难处理  
+[英子的套环](http://www.turingz.cn/MatchProblem?id=1471&matchId=41&num=A) 二维数组前缀和的变形，题目有一个细节很难处理  
 [水水子的魔榴莲](http://www.turingz.cn/MatchProblem?id=1478&matchId=41&num=B) 专门用于比赛卡AK的，思维分析题，跟组合数学、树与图的性质相关，偏难  
 [淇淇子的石头剪刀布（困难版](http://www.turingz.cn/MatchProblem?id=1483&matchId=41&num=C) 贪心法，比较巧妙，建议大家自己尝试  
 [乐乐的毒瘤比赛4](http://www.turingz.cn/MatchProblem?id=1536&matchId=41&num=D) 双向Dijkstra，难度中上  
