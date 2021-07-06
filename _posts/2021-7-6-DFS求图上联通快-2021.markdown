@@ -1,0 +1,94 @@
+---
+layout:     post
+title:      "图论-DFS求联通块 & Floyd最短路径算法"
+subtitle:   "图上DFS求联通块综合探究"
+date:       2021-07-06 15:22:00
+author:     "周琪岳"
+header-img: "img/post-bg-css.jpg"
+header-img-credit: "@WebdesignerDepot"
+header-img-credit-href: "medium.com/@WebdesignerDepot/poll-should-css-become-more-like-a-programming-language-c74eb26a4270"
+header-mask: 0.4
+catalog: true
+tags: 
+  - C++
+  - 数据结构
+  - 图论
+  - 算法
+  - 联通块
+---
+# DFS求图上联通块  
+
+## 大致思路  
+
+图上联通块的求法很多，但是最常见的还是深度优先搜索的求法。  
+由于是暴力，所以就不过多陈述了，直接写思路：  
+
+```c++
+  1）遍历
+  2）建立一个数组，记录遍历过的点
+  3）结束条件：所有的点均完成遍历
+数据结构：
+  邻接表：STL_vector
+  数组：vis[]————存储某点是否来过
+```
+
+## 代码实现  
+```c++
+#include <iostream>
+#include <vector>
+#include <cstring>
+
+using namespace std;
+
+const int N = 1e5 + 100;
+int n, m;
+vector<int> g[N];
+bool vis[N];
+
+void dfs(int u) {
+	vis[u] = true;
+	for(int i=0; i<g[u].size(); i++) {
+		int v = g[u][i];
+		if(!vis[v]) {
+			dfs(v);
+		}
+	}
+}
+
+int main() {
+	cin >> n >> m;
+	for(int i=1, u, v; i<=m; i++) {
+		cin >> u >> v;
+		g[u].push_back(v);
+		g[v].push_back(u);
+	}
+	int ans = 0;
+	memset(vis, false, sizeof(vis));
+	for(int i=1; i<=n; i++) {
+		if(!vis[i]) {
+			dfs(i);
+			ans ++;
+		}
+	}
+	cout << ans;
+	return 0;	
+}
+```
+# Floyd最短路径算法  
+
+Floyd其本质为动态规划以及搜索，算法的思想是，如果我要求出从点i到点j之间的最短路径的距离，如果不能直接到达的话，我可以从中间选择出一个中转点k，先求出从点i到点k的最短距离dis[i][k]，以及点k到点j的最短距离dis[k][j]，如果dis[i][k]+dis[k][j]<dis[i][j]，则我们可以更新dis[i][j]为dis[i][k]+dis[k][j]。
+
+核心代码：  
+```c++
+for(int k=1; k<=n; k++) {
+    for(int i=1; i<=n; i++) {
+        for(int j=1; j<=n; j++) {
+            dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j]);
+        }
+    }
+}
+```
+**这里k这重循环枚举的是中转点。必须放在最外层。** 具体为什么是这样，自己想一想
+
+Floyd推荐习题：[P1119 灾后重建](https://www.luogu.com.cn/problem/P1119) [UVA247 电话圈](https://www.luogu.com.cn/problem/UVA247)
+
