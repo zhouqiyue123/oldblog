@@ -105,11 +105,8 @@ friends: [
     {
         title: "我的洛谷主页",
         href: "https://www.luogu.com.cn/user/446233"
-    }, {
+    },{
       title: "侯平仄大佬",
       href: "https://houpingze.github.io"
-    }, {
-      title: "崔竣恺大佬"，
-      href: "https://blog.csdn.net/cjk20081118"
     }
 ]
