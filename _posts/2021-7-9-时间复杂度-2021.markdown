@@ -64,11 +64,11 @@ int main() {
 
 <font color=red>大O时间复杂度的计算：</font>
 
-<font color=FF0000>1）只保留最高次项：2n^2^</font>
+<font color=FF0000>1）只保留最高次项：2n^2</font>
 
-<font color=FF0000>2）去掉最高此项的系数：n^2^</font>
+<font color=FF0000>2）去掉最高此项的系数：n^2</font>
 
-<font color=FF0000>3）语句数量套上O()：O（n^2^）</font>
+<font color=FF0000>3）语句数量套上O()：O（n^2）</font>
 
 最后结果是O(n^2^)
 
