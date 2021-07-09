@@ -25,8 +25,8 @@ tags:
 [乐乐的外卖](http://www.turingz.cn/MatchProblem?id=1569&matchId=43&num=D) 贪心，但是有两个人，代码相对一个人(陆陆的外卖)难度有所提高  
 [棋盘](https://www.luogu.com.cn/problem/P3956) bfs+堆+记忆化，也可以理解为DP或者Dijkstra  
 [守望者的逃离](https://www.luogu.com.cn/problem/P1095) 贪心或DP，DP的话需要分类讨论
-[传球游戏](传球游戏) DP或者记搜
-[线段](https://www.luogu.com.cn/problem/P3842) DP，转移方程对于我这种DP新手来说略显复杂
+[传球游戏](传球游戏) DP或者记搜  
+[线段](https://www.luogu.com.cn/problem/P3842) DP，转移方程对于我这种DP新手来说略显复杂  
 
 # 挑战题汇总  
 [英子的套环](http://www.turingz.cn/MatchProblem?id=1471&matchId=41&num=A) 二维数组前缀和的变形，题目有一个细节很难处理  
