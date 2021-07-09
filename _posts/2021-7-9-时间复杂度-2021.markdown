@@ -11,17 +11,6 @@ tags:
   - NOIP普及组
   - 时间复杂度
 ---
-<head>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-            tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            inlineMath: [['$','$']]
-            }
-        });
-    </script>
-</head>
 # 时间复杂度的认识
 
 ## 时间复杂度的定义
@@ -115,7 +104,7 @@ int main() {
 
 *以此类推，T(n) = 1 + 1 + 2 + 3 + ... + n*
 
-根据[等差数列求和公式]([等差数列求和公式_百度百科 (baidu.com)](https://baike.baidu.com/item/等差数列求和公式/7527418?fr=aladdin))，**T(n) = $\frac{1}{2}$n^2^ + $\frac{1}{2}$n + 1**
+根据[等差数列求和公式]([等差数列求和公式_百度百科 (baidu.com)](https://baike.baidu.com/item/等差数列求和公式/7527418?fr=aladdin))，**T(n) = 1/2n^2^ + 1/2n + 1**  
 
 **时间复杂度即为O（n^2^）**
 
