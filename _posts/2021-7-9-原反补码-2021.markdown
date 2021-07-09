@@ -1,0 +1,20 @@
+---
+layout:     post
+title:      "NOIP普及组-位运算"
+subtitle:   "按位与、按位或、按位异或、取反、左移还有右移"
+date:       2021-07-08 22:03:00
+author:     "周琪岳"
+header-style: text
+catalog: false
+tags: 
+  - C++
+  - NOIP普及组
+  - 原码、反码与补码
+---
+最近正在准备普及组初赛，KDT老师贴心地为我们整理了原码、反码与补码的转换方法，如果你不会二进制转换，[点我学习](https://zhuanlan.zhihu.com/p/62728719?ivk_sa=1024320u)  
+当然，大家还是更喜欢[这样做](https://tool.lu/hexconvert/)  
+
+话不多说，直接上图：
+
+![原码、反码与补码.png](https://i.loli.net/2021/07/09/kSOEgTsJAU1YlWc.png)  
+CSP-J2021rp++！！！
