@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "NOIP普及组-位运算"
-subtitle:   "按位与、按位或、按位异或、取反、左移还有右移"
+title:      "NOIP普及组-原码、反码与补码"
+subtitle:   "傻瓜式转换操作"
 date:       2021-07-08 22:03:00
 author:     "周琪岳"
 header-style: text
