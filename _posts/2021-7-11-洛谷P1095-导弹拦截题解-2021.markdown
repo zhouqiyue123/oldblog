@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "洛谷P1095-导弹拦截题解"
+title:      "洛谷P1095-守望者的逃离题解"
 subtitle:   "akDiPy"
 date:       2021-07-11 11:21:00
 author:     "周琪岳"
@@ -64,4 +64,6 @@ dp[i]：在第i秒能行进的最远距离 (0 <= i <= T)
 
 
 ![QQ截图20210711111729.png](https://i.loli.net/2021/07/11/KSIFl5Pj4rL7gp2.png)
+
+CSP-J2021rp++！！！
 
