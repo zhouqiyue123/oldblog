@@ -12,6 +12,7 @@ tags:
   - 动态规划
   - 线性DP
   - 二分法
+  - 题解
 ---
 
 > 若要查看题目请[访问](https://www.luogu.com.cn/problem/P1020)  
