@@ -4,7 +4,7 @@ title:      "洛谷-P2258子矩阵题解"
 subtitle:   "动态规划+搜索与回溯"
 date:       2021-07-12 10:26:00
 author:     "周琪岳"
-header-img: "https://raw.githubusercontent.com/zhouqiyue123/picture/master/image.png"
+header-img: "img/image.png"
 catalog: true
 tags: 
   - C++
