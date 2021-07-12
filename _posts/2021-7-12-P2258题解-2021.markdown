@@ -8,9 +8,9 @@ header-img: "https://i.loli.net/2021/07/12/vyRMmgnopJPsXrE.jpg"
 catalog: true
 tags: 
   - C++
-  - 数据结构
-  - 队列
-  - 浅谈系列
+  - 深度优先搜索
+  - 动态规划
+  - 题解
 ---
 > 本篇文章仅有题解，若要查看题目请[访问](https://www.luogu.com.cn/problem/P2258)
 
