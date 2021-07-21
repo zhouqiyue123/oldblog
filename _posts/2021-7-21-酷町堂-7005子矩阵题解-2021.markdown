@@ -1,0 +1,129 @@
+---
+layout:     post
+title:      "酷町堂-7005子矩阵题解"
+subtitle:   "完全背包+01背包练习好题"
+date:       2021-07-21 17:09:00
+author:     "周琪岳"
+header-img: "img/image.png"
+catalog: true
+tags: 
+  - C++
+  - 01背包
+  - 完全背包
+  - 动态规划
+  - 题解
+
+---
+
+> 本篇文章仅有题解，若要查看题目请[访问](https://ke.codingtang.com/#/problem/problemSub?id=7005)
+
+*****
+
+# 建模整理
+
+> - n种物品，手头有m元，每种物品有无数个
+> - 每种物品的单价为wi，购买k个即需花费k*wi元
+> - 若购买第i种，买X(X>0)个的话会获得ai * X + bi个糖果
+> - 计算得到的最多糖果数量
+
+* * *
+
+# 方法一：直接DP
+
+### 思路
+
+建模之后，可以发现，若不存在bi的话，实际上就是一个多重背包的板子题。但是有了bi这一条件，直接跑多重很明显会出问题。我们可以注意题目当中的一个细节：`只有购买了物品，才会有bi个糖果产生`。那么对于是否产生bi无非就两种情况：`购买（1）和不够买（0）`， 可以转化成**01背包**。那接下来怎么办呢？可以再跑一次多重背包，算出最优解
+
+那么代码就是这样： 
+
+```c++
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+const int N = 1e3 + 100, M = 2e3 + 100;
+int n, m, T;
+int dp[M];
+int w[N], wa[N], wb[N];
+
+int main() {
+	cin >> T;
+	while(T --) {
+		cin >> m >> n;
+		for(int i=1; i<=n; i++)
+			cin >> w[i] >> wa[i] >> wb[i];
+		for(int i=1; i<=n; i++)
+			for(int j=m; j>=w[i]; j--)
+				dp[j] = max(dp[j], dp[j-w[i]] + wa[i] + wb[i]);	
+		for(int i=1; i<=n; i++)
+			for(int j=w[i]; j<=m; j++)
+					dp[j] = max(dp[j], dp[j-w[i]] + wa[i]);
+		cout << dp[m] << endl; 
+	}
+	return 0;
+} 
+```
+
+~~好呀，直接交，WAWAWA，WA掉啦！！！~~
+
+> - Q：为什么不对呢
+>
+> - A：很明显，下面的完全背包直接把上面的01背包结果覆盖了，所以等于`根本没跑01背包`
+>
+> - Q：那能不能在求完全背包时同时带上01背包的结果，求最大值呢
+>
+> - A：可以举个例子：
+>
+>     - `第1个物品最优解会选k个，很明显应由**完全背包**推出结果`
+>
+>     - `第2个物品最优解是只选1个，应由**01背包**推出结果`
+>
+>     那如果最优解是：**第1个物品选k个的结果 + 第二个物品选1个的结果**
+>
+>     那在求第2个物品时，完全背包还没来得及跑，那么必然结果不为正解
+>
+> - Q：。。。那怎么改呢？
+>
+> - A：可以把01和多重`一起跑`，不就行了吗
+>
+> - Q：OK
+
+### 代码实现
+
+```c++
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+const int N = 1e3 + 100, M = 2e3 + 100;
+int n, m, T;
+int dp[N][M];
+int w[N], wa[N], wb[N];
+
+int main() {
+	cin >> T;
+	while(T --) {
+		cin >> m >> n;
+		for(int i=1; i<=n; i++)
+			cin >> w[i] >> wa[i] >> wb[i];
+		for(int i=1; i<=n; i++) {
+			for(int j=0; j<=m; j++)
+				if(j >= w[i])
+					dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i]] + wa[i] + wb[i]);
+				else
+					dp[i][j] = dp[i-1][j];
+			for(int j=w[i]; j<=m; j++) 
+				dp[i][j] = max(dp[i][j], dp[i][j-w[i]] + wa[i]);
+		}
+		cout << dp[n][m] << endl; 
+	}
+	return 0;
+} 
+```
+
+哇哇哇，AC了，开心死你啦
+
+CSP-J2021rp++！！！
+
