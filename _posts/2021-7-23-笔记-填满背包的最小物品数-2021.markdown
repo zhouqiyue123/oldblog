@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "笔记-填满背包的最小物品数"
-subtitle:   "队列的基本概念"
+subtitle:   "KDT课堂笔记"
 date:       2021-07-23 20:48:00
 author:     "周琪岳"
 header-img: "img/src=http___b-ssl.duitang.com_uploads_item_201408_09_20140809202812_hV2Q5.thumb.700_0.jpeg&refer=http___b-ssl.duitang.jpg"
