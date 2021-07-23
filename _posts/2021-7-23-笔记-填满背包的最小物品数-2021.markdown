@@ -1,0 +1,115 @@
+---
+layout:     post
+title:      "笔记-填满背包的最小物品数"
+subtitle:   "队列的基本概念"
+date:       2021-07-23 20:48:00
+author:     "周琪岳"
+header-img: "img/src=http___b-ssl.duitang.com_uploads_item_201408_09_20140809202812_hV2Q5.thumb.700_0.jpeg&refer=http___b-ssl.duitang.jpg"
+catalog: true
+tags: 
+  - C++
+  - 动态规划
+  - 01背包
+  - 完全背包
+  - 多重背包
+  - 填满背包的最小物品数
+
+---
+
+# 01背包
+
+**f\[i]\[j] 前i个物品选择一些恰填满容量为j的背包，需要的最小物品数**
+
+边界：
+
+```c++
+memset(f, 0x3f, sizeof(f));
+f[0][0] = 0;
+```
+
+状态转移方程：
+
+```c++
+for(int i=1; i<=n; i++) {
+	for(int j=0; j<=m; j++) {
+        if(j >= v[i])
+            f[i][j] = min(f[i-1][j], f[i-1][j-v[i]] + 1);
+        else
+            f[i][j] = f[i-1][j];
+    }
+}
+// 降维：
+for(int i=1; i<=n; i++) {
+	for(int j=v[i]; j<=m; j++) {
+            f[j] = min(f[j], f[j-v[i]] + 1);
+    }
+}
+```
+
+# 完全背包
+
+**f\[i]\[j] 前i个物品选择一些恰填满容量为j的背包，需要的最小物品数**
+
+边界：
+
+```c++
+memset(f, 0x3f, sizeof(f));
+f[0][0] = 0;
+```
+
+状态转移方程：
+
+```c++
+for(int i=1; i<=n; i++) {
+	for(int j=0; j<=m; j++) {
+        if(j >= v[i])
+            f[i][j] = min(f[i-1][j], f[i][j-v[i]] + 1);
+        else
+            f[i][j] = f[i-1][j];
+    }
+}
+// 降维：
+for(int i=1; i<=n; i++) {
+    for(int j=v[i]; j<=m; j++) {
+        f[j] = min(f[j], f[j-v[i]] + 1);
+    }
+}
+```
+
+# 多重背包
+
+**f\[i]\[j] 前i个物品选择一些恰填满容量为j的背包，需要的最小物品数**
+
+边界：
+
+```c++
+memset(f, 0x3f, sizeof(f));
+f[0][0] = 0;
+```
+
+状态转移方程：
+
+```c++
+for(int i=1; i<=n; i++) {
+	for(int j=0; j<=m; j++) {
+        for(int k=0; k<=c[i]; k++) {
+            if(j >= k*v[i])
+                f[i][j] = min(f[i][j], f[i-1][j-k*v[i]] + k);
+            else
+                break;
+        }
+    }
+}
+// 降维：
+for(int i=1; i<=n; i++) {
+    for(int j=m; j>=0; j--) {
+        for(int k=0; k<=c[i]; k++) {
+            if(j >= k*v[i])
+                f[j] = min(f[j], f[j-k*v[i]] + k);
+            else
+                break;
+        }
+    }
+}
+```
+
