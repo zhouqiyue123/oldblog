@@ -1,0 +1,92 @@
+---
+layout:     post
+title:      "二叉堆的实现课堂笔记"
+subtitle:   "手写二叉堆"
+date:       2021-07-27 14:41:00
+author:     "周琪岳"
+header-style: text
+header-img: "img/数据结构.jpg"
+catalog: true
+tags: 
+  - C++
+  - 二叉堆
+  - 堆
+---
+## 基本定义
+
+**堆：完全二叉树，其左右子树仍然是堆，保证堆顶元素是该堆中元素中最大的（最小的）**
+
+存储时，按照顺序，用数组存储
+
+## 基本操作
+
+- push：插入
+
+- pop：删除
+
+- 返回堆顶元素
+
+## 代码实现
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+const int MAXN = 1e3 + 100;
+int heap[MAXN], size;
+
+void push(int e) { // logn
+	size ++;
+	int idx = size;
+	while(idx / 2) {
+		if(heap[idx/2] < e) {
+			heap[idx] = heap[idx/2];
+			idx /= 2;
+		} else {
+			break;
+		}
+	}
+	heap[idx] = e;
+}
+void pop() { // logn 
+	int e = heap[size];
+	size --;
+	int idx = 1;
+	while(idx*2 <= size) { // 左孩子存在 
+		int maxidx = idx*2;
+		if(idx*2 + 1 <= size && heap[idx*2+1] > heap[idx*2]) {
+			maxidx = idx*2 + 1;		
+		}
+		if(heap[maxidx] > e) {
+			heap[idx] = heap[maxidx];
+			idx = maxidx;
+		} else {
+			break;
+		}
+	}
+	heap[idx] = e;
+}
+int top() {
+	return heap[1];
+}
+
+void show() { // 方便调试的函数
+	for(int i=1; i<=size; i++)
+		cout << "二叉堆上" << i << "结点的值：" << heap[i] << "\n";
+	cout << endl;
+}
+
+int main() {
+	push(1);
+	show();
+	push(2);
+	show();
+	push(3);
+	show();
+	pop();
+	show();
+	return 0;
+}
+```
+
