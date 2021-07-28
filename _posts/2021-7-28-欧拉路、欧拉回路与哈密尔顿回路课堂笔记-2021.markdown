@@ -1,0 +1,131 @@
+---
+layout:     post
+title:      "欧拉路、欧拉回路与哈密尔顿回路课堂笔记"
+subtitle:   "图论"
+date:       2021-07-28 15:50:00
+author:     "周琪岳"
+header-img: "img/数据结构.jpg"
+catalog: true
+tags: 
+  - C++
+  - 数据结构
+  - 图论
+  - 欧拉路径
+  - 哈密尔顿回路
+---
+
+# 欧拉路径
+
+### 简述
+
+若图G中存在这样一条路径，使它恰通过G中每条边1次，则称该路径为**欧拉路径**。若该路径是一个圈，则称为**欧拉（Euler）回路**
+
+> - 定理1：存在欧拉路的条件：图是联通的，`有且仅有2个奇点。`
+> - 定理2：存在欧拉回路的条件：图是联通的，`有0个奇点。`
+
+根据一笔画的两个定理，如果寻找欧拉回路，对**任意一个点**进行`深度优先遍历`；找欧拉路，则对**一个奇点**执行DFS，时间复杂度为O(m + n) ，m是边数，n是点数。
+
+### 代码实现
+
+ *PS：`Github上tab有些时候是8格，只要粘到编辑器里就变成正常的了`*
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+const int MAXN = 5e2 + 100;
+int n, m;
+int g[MAXN][MAXN];
+int d[MAXN];
+int cnt;
+int ans[MAXN];
+
+void dfs(int pos) {
+	ans[++cnt] = pos;
+	for(int i=1; i<=n; i++) {
+		if(g[pos][i]) {
+			g[pos][i] --;
+			g[i][pos] --;
+			dfs(i);
+		}
+	}
+}
+
+int main() {
+	cin >> n >> m;
+	for(int i=1, u, v; i<=m; i++) {
+		cin >> u >> v;
+		g[u][v] ++;
+		g[v][u] ++;
+		d[u] ++;
+		d[v] ++;
+	}
+	int st = 1;
+	for(int i=1; i<=n; i++) {
+		if(d[i] % 2 == 1) {
+			st = i;
+			break;
+		}
+	}
+	dfs(st);
+	for(int i=1; i<=cnt; i++) {
+		cout << ans[i] << " ";
+	}
+	return 0;
+}
+```
+
+# 哈密尔顿回路
+
+跟欧拉回路很像，只不过`访问所有边一次`变为了`访问所有点一次`
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+const int MAXN = 1e3 + 100;
+int n, m;
+int g[MAXN][MAXN], ans[MAXN];
+bool vis[MAXN];
+
+bool dfs(int x, int t) {
+	if(t > n) {
+		if(g[x][1])
+			return true;
+		return false;
+	}
+	for(int i=1; i<=n; i++) {
+		if(g[x][i] && !vis[i]) {
+			ans[t] = i;
+			vis[i] = true;
+			if(dfs(i, t+1))
+				return true;
+			vis[i] = false;
+		}
+	}
+	return false;
+}
+
+int main() {
+	cin >> n >> m;
+	for(int i=1, u, v; i<=m; i++) {
+		cin >> u >> v;
+		g[u][v] ++;
+		g[v][u] ++;
+	}
+	ans[1] = 1;
+	vis[1] = true;
+	if(dfs(1, 2)) {
+		for(int i=1; i<=n; i++)
+			cout << ans[i] << " ";
+		cout << ans[1] << endl;
+	} else {
+		cout << "NO";
+	}
+	return 0;
+}
+```
+
+CSP-J2021rp++！！！
