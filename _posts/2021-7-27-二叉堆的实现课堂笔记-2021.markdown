@@ -4,7 +4,6 @@ title:      "二叉堆的实现课堂笔记"
 subtitle:   "手写二叉堆"
 date:       2021-07-27 14:41:00
 author:     "周琪岳"
-header-style: text
 header-img: "img/数据结构.jpg"
 catalog: true
 tags: 
