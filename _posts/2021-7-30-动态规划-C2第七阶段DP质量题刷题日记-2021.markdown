@@ -1,0 +1,34 @@
+---
+layout:     post
+title:      "动态规划-C2第七阶段DP质量题刷题日记"
+subtitle:   "THIS IS AC/CE/RE/WA/TLE/MLE/OLE/PE/UKE"
+date:       2021-07-25 10:30:56
+author:     "周琪岳"
+header-img: "img/src=http___inews.gtimg.com_newsapp_match_0_10476732793_0.jpg&refer=http___inews.gtimg.jpg"
+catalog: true
+tags: 
+  - C++
+  - 动态规划
+  - 线性DP
+  - 刷题日记
+  - 日记
+  - 01背包
+  - 多重背包
+  - 完全背包
+  - 分组背包
+  - 混合背包
+---
+- 2021.7.20 [KDT5087买零食](https://ke.codingtang.com/#/problem/problemSub?id=5087) 可以用01背包过，但是有一种有趣的做法：把状态设成bool类型，dp\[i]\[j]表示前i个物品选择一些放入容量为j的背包中，能否达到容量j，边界需要考虑一下
+- 2021.7.20 [KDT1210西瓜分配](https://ke.codingtang.com/#/problem/problemSub?id=1210) 比较有意思，~~虽然暴力子集好像能飘过~~，但是标准写法是01背包，只不过体积是总重量的一半，再去跑01背包，需要画图理解理解（最后一句是老师说的）
+- 2021.7.21 [KDT7005买礼物的福利](https://ke.codingtang.com/#/problem/problemSub?id=7005) 01和完全结合，具体是01、完全并列还是嵌套在一起需要仔细考虑一下，十分富有挑战性 
+- 2021.7.22 [KDT4423](https://ke.codingtang.com/#/problem/problemSub?id=4423) 每天即为一个完全背包，最后一天结果即为最终答案
+
+- 2021.7.23 [KDT4945](https://ke.codingtang.com/#/problem/problemSub?id=4945) 一道比较裸的分组背包，但是对初学者来说十分经典，尤其是memset成-1的思想，值得反复研究
+- 2021.7.24 [KDT2682](https://ke.codingtang.com/#/problem/problemSub?id=2682) 算是分组背包的变形，虽然每组可以选多个，但好在每组物品价值和体积都一模一样，比较好写
+- 2021.7.24 [KDT2721](https://ke.codingtang.com/#/problem/problemSub?id=2721) 分组背包难题（对于像我一样的初学者），每组至少选1个，每组物品价值体积各不相同
+- 2021.7.24 [KDT2424](https://ke.codingtang.com/#/problem/problemSub?id=2424) 多重背包+完全背包，多重付钱，完全找钱，还要加二进制拆分，较为毒瘤
+- 2021.7.24 [KDT2341](https://ke.codingtang.com/#/problem/problemSub?id=2341) 劳累了1day，最后一题，实在不想写DP了，记搜记搜切切切~~~（事实证明实际上是一道JD的分组背包）
+- 2021.7.25 [KDT1205](https://ke.codingtang.com/#/problem/problemSub?id=1205) 算是一道比较难的区间DP，括号匹配和不匹配的情况需分类讨论，讨论完再结合分析
+- 2021.7.26 [KDT3391](https://ke.codingtang.com/#/problem/problemSub?id=3391) 不难，但是要求输出添加括号后的算式以及中间值，需要递归输出，还好学线性DP的时候老师教过~~~
+
+CSP-J2021rp++！！！
