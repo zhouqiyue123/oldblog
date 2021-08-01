@@ -4,7 +4,7 @@ title:      "酷町堂C2-7线上阶段考游记"
 subtitle:   "COMPLETE AND PROGRESS"
 date:       2021-08-01 11:40:00
 author:     "周琪岳"
-header-img: "img/游记.jpg"
+header-img: "img/游记暗.jpg"
 catalog: true
 tags:
     - 游记
