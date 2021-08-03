@@ -1,0 +1,245 @@
+---
+layout:     post
+title:      "图论-图论基础算法模板汇总"
+subtitle:   "板子参考中心"
+date:       2021-08-03 13:18:00
+author:     "周琪岳"
+header-img: "img/post-bg-css.jpg"
+header-img-credit: "@WebdesignerDepot"
+header-img-credit-href: "medium.com/@WebdesignerDepot/poll-should-css-become-more-like-a-programming-language-c74eb26a4270"
+header-mask: 0.4
+catalog: true
+tags: 
+  - C++
+  - 数据结构
+  - 图论
+
+---
+
+## 欧拉路径
+
+```c++
+#include <iostream>
+using namespace std;
+int n, m, g[101][101], d[101], cnt, ans[101];
+void dfs(int x) {
+	for(int i=1; i<=n; i++)
+		if(g[x][i]) {
+			g[x][i] = g[i][x] = 0;
+			dfs(i);
+		}
+	ans[++cnt] = x;
+}
+int main() {
+	cin >> n >> m;
+	int u, v;
+	for(int i=1; i<=m; i++) {
+		cin >> u >> v;
+		g[u][v] = g[v][u] = 1;
+		d[u] ++;
+		d[v] ++;
+	}
+	int st = 1;
+	for(int i=1; i<=n; i++)
+		if(d[i]%2==1) {
+			st = i;
+			break;
+		}
+	dfs(st);
+	for(int i=cnt; i>=1; i--)
+		cout << ans[i] << ' ';
+	return 0;
+}
+```
+
+## 哈密尔顿回路
+
+```c++
+#include <iostream>
+using namespace std;
+int n, m, g[105][105], ans[105];
+bool vis[105];
+bool dfs(int x, int t) {
+	if(t>n) {
+		if(g[x][1])	return true;
+		return false;
+	}
+	for(int i=1; i<=n; i++) {
+		if(g[x][i] && !vis[i]) {
+			ans[t] = i;
+			vis[i] = true;
+			if(dfs(i, t+1))	return true;
+			vis[i] = false;
+		}
+	}
+	return false;
+}
+int main() {
+	cin >> n >> m;
+	int u, v;
+	for(int i=1; i<=m; i++) {
+		cin >> u >> v;
+		g[u][v] = g[v][u] = 1;
+	}
+	ans[1] = 1;
+	vis[1] = true;
+	if(dfs(1, 2)) {
+		for(int i=1; i<=n; i++)
+			cout << ans[i] << ' ';
+		cout << ans[1];
+	}
+	else	cout << "NO";
+	return 0;
+} 
+```
+
+## Floyd多源最短路
+
+```c++
+for(int k=1; k<=n; k++) {
+    for(int i=1; i<=n; i++) {
+        for(int j=1; j<=n; j++) {
+            dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j]);
+        }
+    }
+}
+```
+
+
+
+## Dijkstra最短路（无优化）
+
+```c++
+int n;
+int cost[MAXN][MAXN];
+bool found[MAXN];
+int dis[MAXN];
+void Dijkstra(int s) {
+    memset(found, false, sizeof(found));
+    memset(dis, 0x3f, sizeof(dis));
+    dis[s] = 0;
+    while(true) {
+        int u = -1;
+        for(int i=1; i<=n; i++)
+            if(!found[i]&&(u==-1||dis[i]<dis[u])) 
+                u = i;
+        if(u==-1)   return;
+        found[u] = true;
+        for(int i=1; i<=n; i++) 
+            dis[i] = min(dis[i], dis[u]+cost[u][i]);
+    }
+}
+```
+
+
+
+## Dijkstra最短路堆优化
+
+```c++
+typedef pair<int,int> P;//距离，编号
+struct edge{
+	int to, w;
+}; 
+vector<edge> g[MAXN];
+int dis[MAXN];
+
+void dijkstra(int s){
+	memset(dis,0x3f,sizeof(dis));
+	//fill(dis,dis+MAXN,INF);
+	dis[s]=0;
+	q.push(P(0,s));
+	while(!q.empty()){
+		P t=q.top(); q.pop();
+		int u=t.second;//编号 
+		if(d[u]<t.first) continue;
+		// 小根堆里的队首元素 是最小值，如果满足此条件说明已经被更新过了，就不需要再更新。 
+		for(int i=0;i<g[u].size();i++){
+			edge e=g[u][i];
+			if(dis[e.to]>dis[u]+g[u][i]){
+				dis[e.to]=dis[u]+g[u][i];
+				q.push(P(dis[e.to],e.to));
+			}
+		}
+	}
+}
+```
+
+## 最小生成树Prim
+
+```c++
+int MST_prim(){
+	int ans=0;
+	memset(dis,0x3f,sizeof(dis));
+	memset(found,false,sizeof(found));
+	dis[1]=0;
+	while(1){
+		int u=-1;
+		for(int i=0;i<=n;i++){
+			if(!found[i]&&(u==-1||dis[i]<dis[u])){
+				u=i;
+			}
+		}
+		if(u==-1) break;
+		found[u]=true;
+		ans+=dis[u];
+		for(int i=0;i<=n;i++){
+			if(!found[i]&&g[u][i]<dis[i]){
+				dis[i]=g[u][i];
+			}
+		}
+	}
+	return ans;
+}
+```
+
+## 最小生成树Kruscal
+
+```c++
+int MST_Kruscal() {
+	int ans = 0;
+	init(); // 并查集初始化函数
+	sort(a+1, a+1+m);
+	for(int i=1; i<=m; i++) {
+		if(!same(a[i].u, a[i].v)) {
+			unit(a[i].u, a[i].v);
+			ans += a[i].w;
+		}
+	}
+	return ans;
+}
+```
+
+## 最短路+判负环Bellman_Ford
+
+```c++
+bool Ford(int s) {
+	memset(dis, 0x3f, sizeof(dis));
+	dis[s] = 0;
+	for(int i=1; i<n; i++)
+		for(int j=1; j<=n; j++)
+			for(int k=0; k<g[j].size(); k++) {
+				edge e = g[j][k];
+				dis[e.adj] = min(dis[e.adj], dis[j]+e.w);
+			}
+	for(int i=1; i<=n; i++)
+		for(int j=0; j<g[i].size(); j++) {
+			edge e = g[i][j];
+			if(dis[e.adj]>dis[i]+e.w)
+				return false;
+		}
+	return true;
+}
+```
+
+## 最短路SPFA
+
+```c++
+void SPFA(int s) {	memset(dis, 0x3f, sizeof(dis));	memset(vis, false, sizeof(vis));	dis[s] = 0;	q.push(s);	vis[s] = true;	while(!q.empty()) {		int u = q.front(); q.pop();		vis[u] = false;		for(int i=0; i<g[u].size(); i++) {			edge e = g[u][i];			if(dis[e.next] > dis[u] + e.w) {				dis[e.next] = dis[u] + e.w;				if(!vis[e.next]) {					q.push(e.next);				}			}		}	}} 
+```
+
+## DFS求联通块
+
+```c++
+#include <iostream>#include <vector>#include <cstring>using namespace std;const int N = 1e5 + 100;int n, m;vector<int> g[N];bool vis[N];void dfs(int u) {	vis[u] = true;	for(int i=0; i<g[u].size(); i++) {		int v = g[u][i];		if(!vis[v]) {			dfs(v);		}	}}int main() {	cin >> n >> m;	for(int i=1, u, v; i<=m; i++) {		cin >> u >> v;		g[u].push_back(v);		g[v].push_back(u);	}	int ans = 0;	memset(vis, false, sizeof(vis));	for(int i=1; i<=n; i++) {		if(!vis[i]) {			dfs(i);			ans ++;		}	}	cout << ans;	return 0;	}
+```
+
