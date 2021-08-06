@@ -65,14 +65,6 @@ disqus_username: ZQY
 netease_comment: false
 
 #valine settings
-valine_comment:
-  enable: true
-# app_id
-  leancloud_appid: ed6s5jkzFEjrWzbRtetva2OI-gzGzoHsz
-# app_key
-  leancloud_appkey: UPnNjb9tDmtSvOYMBKixOxga
-# placeholde
-  placeholder: “Just go go"
 
 # Analytics settings
 # Baidu Analytics 
