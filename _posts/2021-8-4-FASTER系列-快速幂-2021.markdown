@@ -51,6 +51,8 @@ tags:
 
 ## 代码实现
 
+### 递归写法
+
 ```c++
 int quickpow(int a, int b, int c) { // 返回(a^b) % c O(logn) 
 	if(b == 1) return a % c;
@@ -63,6 +65,20 @@ int quickpow(int a, int b, int c) { // 返回(a^b) % c O(logn)
 		ret = ret * a % c;
 		return ret;
 	}
+}
+```
+
+### 循环写法
+
+```c++
+int quickpow(int a, int b, int n) {
+	int ret = 1;
+	while(b) {
+		if(b % 2 == 1) ret = ret * a % n;
+		a = a*a%n;
+		b = b/2;
+	}
+	return ret;
 }
 ```
 
