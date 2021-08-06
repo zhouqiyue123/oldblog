@@ -1,23 +1,3 @@
----
-layout:     post
-title:      "图论MST-基于贪心+并查集的Kruscal算法"
-subtitle:   "图上最小生成树Kruscal算法课堂笔记"
-date:       2021-07-31 11:12:00
-author:     "周琪岳"
-header-img: "img/post-bg-css.jpg"
-header-img-credit: "@WebdesignerDepot"
-header-img-credit-href: "medium.com/@WebdesignerDepot/poll-should-css-become-more-like-a-programming-language-c74eb26a4270"
-header-mask: 0.4
-catalog: true
-tags: 
-  - C++
-  - 数据结构
-  - 图论
-  - 最小生成树
-  - Kruscal
-  - 并查集
-  - 联通块
----
 # 算法简述
 
 **Kruscal算法**，就是基于并查集的贪心算法，时间复杂度为mlogm（m为图的边数），用于解决**稀疏图**上的MST问题
