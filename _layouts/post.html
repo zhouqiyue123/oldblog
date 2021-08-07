@@ -50,7 +50,14 @@ layout: default
                     {% endif %}
                 </ul>
                 <hr style="visibility: hidden;">
-
+		<div>
+		     {% if site.comments.gitalk %}
+		     <section class="post-footer-item comment">
+		     <div id="gitalk_container"></div>
+		     <div id="disqus_thread"></div>
+		     </section>
+		     {% endif %}
+		</div>
                 {% if site.disqus_username %}
                 <!-- disqus 评论框 start -->
                 <div class="comment">
@@ -174,3 +181,19 @@ layout: default
     }
 </style>
 {% endif %}
+
+{% if site.comments.gitalk %}
+  <script>
+    var gitalk = new Gitalk({
+      id: location.pathname,
+      clientID: '{{ site.comments.clientID }}',  //这里其实可以直接填值，但是考虑到页面安全性，还是通过配置的方式添加
+      clientSecret: '{{ site.comments.secret }}', 
+      repo: '{{ site.comments.repo }}', 
+      owner: '{{ site.comments.owner }}',
+      admin: '{{ site.comments.admin }}',
+      distractionFreeMode: '{{ site.comments.distractionFreeMode }}'
+    })
+
+    gitalk.render('disqus_thread')
+  </script>
+  {% endif %}
