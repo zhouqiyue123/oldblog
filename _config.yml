@@ -56,7 +56,14 @@ kramdown:
       line_numbers: true
       start_line: 1
 
-
+comments:
+  gitlalk: true
+  clientID: '05757a9126b73e1b7570'
+  secret: '487fd7188cdcd74dab085eaf264e1bc6149875ff'
+  repo: 'zhouqiyue123.github.io'
+  owner: 'zhouqiyue123'
+  admin: 'zhouqiyue123'
+  distractionFreeMode: true
 
 # Disqus settings
 disqus_username: ZQY
