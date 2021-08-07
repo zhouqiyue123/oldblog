@@ -50,14 +50,6 @@ layout: default
                     {% endif %}
                 </ul>
                 <hr style="visibility: hidden;">
-		<div>
-		     {% if site.comments.gitalk %}
-		     <section class="post-footer-item comment">
-		     <div id="gitalk_container"></div>
-		     <div id="disqus_thread"></div>
-		     </section>
-		     {% endif %}
-		</div>
                 {% if site.disqus_username %}
                 <!-- disqus 评论框 start -->
                 <div class="comment">
@@ -106,6 +98,16 @@ layout: default
     </div>
 </article>
 
+
+<div>
+     {% if site.comments.gitalk %}
+     <section class="post-footer-item comment">
+     <div id="gitalk_container"></div>
+     <div id="disqus_thread"></div>
+     </section>
+     {% endif %}
+</div>
+
 <!-- add support for mathjax by voleking-->
 {% if page.mathjax %}
   {% include mathjax_support.html %}
@@ -126,6 +128,7 @@ layout: default
 </script>
 <!-- 网易云跟帖JS代码 end -->
 {% endif %}
+
 
 
 {% if site.disqus_username %}
