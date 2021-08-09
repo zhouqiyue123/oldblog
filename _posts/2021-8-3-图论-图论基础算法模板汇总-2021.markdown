@@ -234,12 +234,76 @@ bool Ford(int s) {
 ## 最短路SPFA
 
 ```c++
-void SPFA(int s) {	memset(dis, 0x3f, sizeof(dis));	memset(vis, false, sizeof(vis));	dis[s] = 0;	q.push(s);	vis[s] = true;	while(!q.empty()) {		int u = q.front(); q.pop();		vis[u] = false;		for(int i=0; i<g[u].size(); i++) {			edge e = g[u][i];			if(dis[e.next] > dis[u] + e.w) {				dis[e.next] = dis[u] + e.w;				if(!vis[e.next]) {					q.push(e.next);				}			}		}	}} 
+struct edge {
+	int next, w;
+};
+vector<edge> g[MAXN];
+bool vis[MAXN];
+queue<int> q;
+void spfa(int s) {
+	memset(dis, 0x3f, sizeof(dis));
+	memset(vis, false, sizeof(vis));
+	dis[s] = 0;
+	q.push(s);
+	vis[s] = true;
+	while(!q.empty()) {
+		int u = q.front(); q.pop();
+		vis[u] = false;
+		for(int i=0; i<g[u].size(); i++) {
+			edge e = g[u][i];
+			if(dis[e.next] > dis[u] + e.w) {
+				dis[e.next] = dis[u] + e.w;
+				if(!vis[e.next]) {
+					vis[e.next] = true;
+					q.push(e.next);
+				}
+			}
+		}
+	} 
+}
 ```
 
 ## DFS求联通块
 
 ```c++
-#include <iostream>#include <vector>#include <cstring>using namespace std;const int N = 1e5 + 100;int n, m;vector<int> g[N];bool vis[N];void dfs(int u) {	vis[u] = true;	for(int i=0; i<g[u].size(); i++) {		int v = g[u][i];		if(!vis[v]) {			dfs(v);		}	}}int main() {	cin >> n >> m;	for(int i=1, u, v; i<=m; i++) {		cin >> u >> v;		g[u].push_back(v);		g[v].push_back(u);	}	int ans = 0;	memset(vis, false, sizeof(vis));	for(int i=1; i<=n; i++) {		if(!vis[i]) {			dfs(i);			ans ++;		}	}	cout << ans;	return 0;	}
+#include <iostream>
+#include <vector>
+#include <cstring>
+
+using namespace std;
+
+const int N = 1e5 + 100;
+int n, m;
+vector<int> g[N];
+bool vis[N];
+
+void dfs(int u) {
+	vis[u] = true;
+	for(int i=0; i<g[u].size(); i++) {
+		int v = g[u][i];
+		if(!vis[v]) {
+			dfs(v);
+		}
+	}
+}
+
+int main() {
+	cin >> n >> m;
+	for(int i=1, u, v; i<=m; i++) {
+		cin >> u >> v;
+		g[u].push_back(v);
+		g[v].push_back(u);
+	}
+	int ans = 0;
+	memset(vis, false, sizeof(vis));
+	for(int i=1; i<=n; i++) {
+		if(!vis[i]) {
+			dfs(i);
+			ans ++;
+		}
+	}
+	cout << ans;
+	return 0;	
+}
 ```
 
