@@ -1,0 +1,70 @@
+---
+layout:     post
+title:      "[AHOI2018](非省选)分组(division)"
+subtitle:   "模拟+栈"
+date:       2021-08-12 16:30:00
+author:     "周琪岳"
+header-img: "img/jarvis.jpg"
+catalog: true
+tags: 
+  - C++
+  - 线性表
+  - 模拟
+  - 栈
+---
+
+## 切入点
+
+此题乍一看很多方法，比如我刚开始以为是二分+贪心，写挂后又以为是DP优化，但是实际上就是一个模拟，只不过需要开栈来维护每个组的实力值。
+
+## 思路
+
+首先，将实力值排序（很明显）。然后遍历每个人，考虑将这个人放到某一个组中。组内人员的实力值可以开一个栈维护，题目要求实力值连续，我们可以遍历每个栈，分析是否满足题意。如果多个栈都满足`实力值连续`的要求，我们便选组内人数最小的入栈（因为我们要求`人数最少的组人数的最大值`）。若无任何一组满足要求或者第一个人没组可分，新开一个栈，成立一个新组。最后把所有栈的长度取最小就可以求出最优解。
+
+## 拓展
+
+我本人刚开始做的时候尝试了贪心+二分和动态规划，但是都无果，最后才采用了上述写法。贪心+二分我的思路是：二分最小长度，贪心的判定，但是我写到一半发现贪心判定出的结论并不一定满足二分的需求，有可能二分到2时，返回`false`，但二分到3却返回`true`。我又思考了DP的方法，但是只能O(n^2)的实现。若有小伙伴知道其他方法，可以在洛谷私信联系我。
+
+## 代码实现
+
+```c++
+#include <iostream>
+#include <algorithm>
+#include <stack>
+
+using namespace std;
+
+const int INF = 0x3f3f3f3f;
+const int MAXN = 1e5 + 100;
+int n;
+int a[MAXN];
+int cnt = 0;
+stack<int> q[MAXN];
+int ans = INF;
+
+int main() {
+	cin >> n;
+	for(int i=1; i<=n; i++)
+		cin >> a[i];
+	sort(a+1, a+1+n);
+	for(int i=1; i<=n; i++) {
+		int pos = cnt + 1, minn = INF; // 提前将pos赋成cnt+1，便不用特断 无任何一组满足要求 或者 第一个人没组可分 的情况了 
+		for(int j=1; j<=cnt; j++) {
+			if(a[i] == q[j].top() + 1 && q[j].size() < minn) {
+				pos = j;
+			}
+		}
+		if(pos == cnt + 1) {
+			cnt ++;
+		}
+		q[pos].push(a[i]);
+	}
+	for(int i=1; i<=cnt; i++) {
+		int tmp = q[i].size();
+		ans = min(ans, tmp);
+	}
+	cout << ans;
+	return 0;
+}
+```
+
