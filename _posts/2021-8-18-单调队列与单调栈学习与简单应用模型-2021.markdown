@@ -1,0 +1,142 @@
+---
+layout:     post
+title:      "单调队列与单调栈学习与简单应用模型"
+subtitle:   "Monotone queue and monotone stack learning and simple application"
+date:       2021-08-18 11:11:11
+author:     "周琪岳"
+header-style: text
+catalog: false
+tags: 
+  - C++
+  - 数据结构
+  - 线性表
+  - 单调队列
+  - 单调栈
+  - 队列
+  - 栈
+
+---
+
+## 单调队列引入
+
+单调队列，就是队列中的元素具有一定单调性的队列，通常用双端队列（STL_deque）来进行实现，跟优先队列有一定相似之处，只不过优先队列只需要提前规定顺序往队列里丢元素就行了，而单调队列需要根据情况判定。然而，好用的东西是有代价的， 「优先队列」的插入和删除操作时间复杂度均为O($\log_2n$) ，而单调队列可以实现近乎O(1)的复杂度。由于空讲概念不能描绘出单调队列的优势，所以我们看几个简单应用。
+
+## 单调队列简单运用实例
+
+### 维护定长区间最值
+
+维护定长区间最值是单调队列最经典的运用场景，这里以[洛谷P1886](https://www.luogu.com.cn/problem/P1886)为例，阐述一下单调队列的基本写法
+
+- 「朴素方法」：滑动窗口，遍历求最值，O($n^2$)，喜提TLE
+
+- 「单调队列」：以求最小值为例，滑动窗口的循环是无法省掉的，但是我们可以开一个**双端队列**，元素都是Monotone_Node，存元素**在数组中的位置** and **元素值**。按样例模拟：
+
+    ```c++
+    8 3
+    1 3 -1 -3 5 3 6 7
+    ```
+
+    | i的值（区间右端点） | 因不在区间内被out的元素 | 因值太大被out的元素 | 新入队元素（队尾入队） | 答案 | 队内情况  |
+    | :-----------------: | :---------------------: | :-----------------: | :--------------------: | ---- | --------- |
+    |          1          |           无            |         无          |           1            | ——   | **1**     |
+    |          2          |           无            |         无          |           3            | ——   | **3,1**   |
+    |          3          |           无            |        1、3         |           -1           | -1   | **-1**    |
+    |          4          |           无            |         -1          |           -3           | -3   | **-3**    |
+    |          5          |           无            |         无          |           5            | -3   | **5,-3**  |
+    |          6          |           无            |          5          |           3            | -3   | **3,-3**  |
+    |          7          |           -3            |         无          |           6            | 3    | **6,3**   |
+    |          8          |           无            |         无          |           7            | 3    | **7,6,3** |
+
+    > 这里叙述的比较简略，如果想更方便理解的话，可以参考巨佬们的题解。
+    >
+    > 总之，遵从2大原则：
+    >
+    > 1. <font color=red>不在区间内的出队</font>
+    > 2. <font color=red>比新进元素还要大的出队</font>
+
+    如此，可以实现近乎O(n)的维护。最大值思想也差不多，姑且不在赘述。
+
+    细节详见代码：
+
+    ```c++
+    #include <iostream>
+    #include <deque>
+    
+    using namespace std;
+    
+    const int MAXN = 1e6 + 100;
+    int n, k;
+    int val[MAXN];
+    
+    struct Monotone_Node {
+        int pos;
+        int c;
+    };
+    deque<Monotone_Node> dq;
+    
+    int main() {
+        cin >> n >> k;
+        for(int i=1; i<=n; i++)
+            cin >> val[i];
+        for(int i=1; i<=n; i++) {
+            while(!dq.empty() && dq.front().pos < i-k+1)
+                dq.pop_front();
+            while(!dq.empty() && val[i] <= dq.back().c)
+                dq.pop_back();
+            dq.push_back((Monotone_Node){i, val[i]});
+            if(i >= k) cout << dq.front().c << " ";
+        }
+        cout << endl;
+        dq.clear();
+        for(int i=1; i<=n; i++) {
+            while(!dq.empty() && dq.front().pos < i-k+1)
+                dq.pop_front();
+            while(!dq.empty() && val[i] >= dq.back().c)
+                dq.pop_back();
+            dq.push_back((Monotone_Node){i, val[i]});
+            if(i >= k) cout << dq.front().c << " ";
+        }
+        return 0;
+    }
+    ```
+
+### 延伸数据结构：单调栈
+
+单调队列的一个变形就是单调栈，上个模板题吧：[P5788](https://www.luogu.com.cn/problem/P5788) 这道题$1 \le n\leq 3\times 10^6$ 很明显不能用朴素O($n^2$) 的算法，所以有必要使用**单调栈**这个数据结构。顾名思义，单调栈就是内部元素具有单调性的栈，结合样例理解一下单调栈的逻辑吧：
+
+```c++
+5
+1 4 2 3 5
+```
+
+我们可以设计一个自顶向下单调递减的栈，倒序遍历，为了维护栈内单调性，我们可以遵从**弱者让强，老者让新**的原则，进行出栈操作（弱者让强很好理解，老者让新是因为排在后面的元素不容易被前面的元素“捕捉”）。具体内容请见代码：
+
+```c++
+#include <iostream>
+#include <stack>
+#include <cstdio>
+
+using namespace std;
+
+const int MAXN = 3e6 + 100;
+int n, a[MAXN];
+stack<int> st;
+int ans[MAXN];
+
+int main() {
+	scanf("%d", &n);
+	for(int i=1; i<=n; i++)
+		scanf("%d", &a[i]);
+	for(int i=n; i>=1; i--) {
+		while(!st.empty() && a[i] >= a[st.top()]) st.pop();
+		ans[i] = st.empty()?0:st.top();
+		st.push(i);
+	}
+	for(int i=1; i<=n; i++)
+		printf("%d ", ans[i]);
+	return 0; 
+} 
+```
+
+
+
